@@ -10,7 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;*/
 
-/*public class AlertUsersSLA {
+public class AlertUsersSLA {
 
      public void sendEmailAlert(String mailid,String ticketnumber){
 
@@ -74,5 +74,5 @@ import javax.mail.internet.MimeMessage;*/
 
     }
 
-}*/
+}
 

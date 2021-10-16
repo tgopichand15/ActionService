@@ -4,7 +4,7 @@ import com.example.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-/*public class FetchDataClientTest {
+public class FetchDataClientTest {
 
 	public static void main(String[] args) {
 		Issues issues = null;
@@ -66,4 +66,4 @@ import org.hibernate.Session;
 		}
 	    
 	  }
-}*/
+}

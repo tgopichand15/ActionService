@@ -2,7 +2,7 @@ package com.example.ActionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-/*public class FetchTicketDetails {
+public class FetchTicketDetails {
 
     @Autowired
     FetchDataClientTest fetchdataclienttest;
@@ -36,4 +36,4 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 
-}*/
+}

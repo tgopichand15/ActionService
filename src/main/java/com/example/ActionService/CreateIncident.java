@@ -1,10 +1,10 @@
 package com.example.ActionService;
 
-/*public class CreateIncident {
+public class CreateIncident {
 
     //write code to call create incident powershell scrtipt
 
-    public ArrayList<String> executeScript(String hostname,String path) {
+    public ArrayList<String> executeScript(String hostname, String path) {
         try {
 
             Process p = new ProcessBuilder()
@@ -18,8 +18,9 @@ package com.example.ActionService;
     }
 
 
+    puvlic
 
-    puvlic void inserRecordstoDB() {
+    void inserRecordstoDB() {
 
 
         @Autowired
@@ -32,4 +33,4 @@ package com.example.ActionService;
     }
 
 
-}*/
+}
