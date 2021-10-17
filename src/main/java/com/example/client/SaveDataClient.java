@@ -1,5 +1,6 @@
 package com.example.client;
 
+import com.example.entities.Ticket;
 import com.example.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,7 +8,7 @@ import com.example.entities.Laptop;
 import com.example.entities.Student;
 import java.util.*;
 
-public class SaveDataClientTest {
+public class SaveDataClient {
 
 
 	//code to insert resolved isseus
@@ -64,7 +65,7 @@ public class SaveDataClientTest {
 	}*/
 
 	//push ticket data to DB
-	/*public static void addTickettoDb(Tickets t) {
+	public static void addTickettoDb(Ticket t) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			session.beginTransaction();
 			Integer id = (Integer) session.save(t);
@@ -73,7 +74,7 @@ public class SaveDataClientTest {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 
 	/*private static UnresolvedIssues getunresolvedIssue (){

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Ticket")
-public class Tickets {
+public class Ticket {
 
     @Id
     @Column(name="ticket_id")
@@ -43,7 +43,7 @@ public class Tickets {
 
     @Override
     public String toString() {
-        return "Tickets{" +
+        return "Ticket{" +
                 "id=" + id +
                 ", assignedToTeam='" + assignedToTeam + '\'' +
                 ", Ticketnumber='" + Ticketnumber + '\'' +

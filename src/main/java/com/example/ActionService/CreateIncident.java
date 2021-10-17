@@ -1,10 +1,20 @@
 package com.example.ActionService;
 
+import com.example.client.SaveDataClient;
+import com.example.entities.Ticket;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+
 public class CreateIncident {
 
     //write code to call create incident powershell scrtipt
 
-    public ArrayList<String> executeScript(String hostname, String path) {
+
+    @Autowired
+    public SaveDataClient savedataclienttest;
+
+    public static ArrayList<String> executeScript(String hostname,String issuename) {
         try {
 
             Process p = new ProcessBuilder()
@@ -13,23 +23,22 @@ public class CreateIncident {
                             "-filepath", "C:\\scripts\\script.ps1").start();
             p.waitFor();
         } catch (Exception e) {
-            e.printStackSpace();
+            e.printStackTrace();
         }
+        return null;
     }
 
 
-    puvlic
-
-    void inserRecordstoDB() {
 
 
-        @Autowired
-        private SaveDataClientTest savedataclienttest;
+    void inserRecordstoDB(Ticket t) {
+
+
 
         //once ticket is created via APi push it to DB pass ticket object to this method
 
 
-        savedataclienttest.addTickettoDb(Tickets t);
+        savedataclienttest.addTickettoDb(t);
     }
 
 

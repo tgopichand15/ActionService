@@ -1,11 +1,12 @@
 package com.example.ActionService;
 
+import com.example.client.FetchDataClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class FetchTicketDetails {
 
     @Autowired
-    FetchDataClientTest fetchdataclienttest;
+    FetchDataClient fetchdataclienttest;
 
 
     public static boolean fetchIssueIsAbouttoBreach(String Ticket) {
@@ -18,22 +19,23 @@ public class FetchTicketDetails {
                     .command("invoke-command", "-computername", "Server1",
                             "-filepath", "C:\\scripts\\script.ps1").start();
             p.waitFor();
-            return p.result();
+            int time=p.exitValue();
+            //to check if breach time is lless than 30
+            if (time <= 30) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
-            e.printStackSpace();
+            e.printStackTrace();
         }
 
 
-        //to check if breach time is lless than 30
-        if (time <= 30) {
-            return true;
-        } else {
-            return false;
-        }
+return false;
     }
     }
 
 
 
 
-}
+

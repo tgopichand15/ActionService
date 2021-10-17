@@ -12,8 +12,8 @@ public class UnresolvedIssue {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="assignedtoteam")
-    private String assignedToTeam;
+    @Column(name="issuename")
+    private String issuename;
 
     @Column(name="Hostname")
     private String Hostname;
@@ -26,12 +26,12 @@ public class UnresolvedIssue {
         this.id = id;
     }
 
-    public String getAssignedToTeam() {
-        return assignedToTeam;
+    public String getIssuename() {
+        return issuename;
     }
 
-    public void setAssignedToTeam(String assignedToTeam) {
-        this.assignedToTeam = assignedToTeam;
+    public void setIssuename(String issuename) {
+        this.issuename = issuename;
     }
 
     public String getHostname() {
@@ -46,11 +46,9 @@ public class UnresolvedIssue {
     public String toString() {
         return "UnresolvedIssue{" +
                 "id=" + id +
-                ", assignedToTeam='" + assignedToTeam + '\'' +
+                ", issuename='" + issuename + '\'' +
                 ", Hostname='" + Hostname + '\'' +
                 '}';
     }
-
-
 }
 

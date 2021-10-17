@@ -1,32 +1,37 @@
 package com.example.ActionService;
 
+import com.example.client.FetchDataClient;
+import com.example.entities.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 
 public class MonitorSLA {
 
+    @Autowired
+    public FetchDataClient fetchdataclienttest;
+
+
+    @Autowired
+    public FetchTicketDetails fetchdetails;
+
+    @Autowired
+    public AlertUsersSLA alertuserssla;
+
     public void monitiorSLA() {
 
-        @Autowired
-        private FetchDataClientTest fetchdataclienttest;
-
-
-        @Autowired
-        private FetchTicketDetails fetchticketdetails;
-
-        @Autowired
-        private AlertUsersSLA alertuserssla;
 
 
         //fetching ticket numbers from DB code to be written for this method
-        ArrayList<String> al = fetchdataclienttest.fetchticketDetails();
+        List<String> al = fetchdataclienttest.fetchticketDetails();
 
 
         //for each ticket checking if this is about to be breached method to be impletemented in fetchticketdetails class
-        foreach(String ticket:al){
-            boolean status = fetchticketdetails.fetchIssueIsAbouttoBreach(ticket);
+        for( String s:al){
+            boolean status = fetchdetails.fetchIssueIsAbouttoBreach(s);
+            Ticket t=fetchdataclienttest.fetchticketdetails(s);
+            String emailid=t.getAssignedToTeam();
             if (status) {
-                alertuserssla.sendEmailAlert(al.get(1), message.get(0));
+                alertuserssla.sendEmailAlert(emailid,s);
             }
         }
 

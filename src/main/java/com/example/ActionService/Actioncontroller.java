@@ -1,64 +1,74 @@
 package com.example.ActionService;
 
+import com.example.client.FetchDataClient;
+import com.example.entities.Ticket;
+import com.example.entities.UnresolvedIssue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Actioncontroller {
 
 
-    @Controller
+
+    @Autowired
+    public CreateIncident createincident;
+
+    @Autowired
+    public FetchDataClient fetchdataclienttest;
+
+
+    @Autowired
+    private FetchTicketDetails fetchticketdetails;
+
+    @Autowired
+    private AlertUsersSLA alertuserssla;
+
+    @Autowired
+    private MonitorSLA monitorsla;
+
     @RequestMapping("/Action_service")
-    public List<UnresolvedIssues> createTickets(){
+    public List<UnresolvedIssue> createTickets(){
 
         //process data from DB and finally create final entries for hashmap values hostname and issues name
 
-        @Autowired
-        private CreateIncident createincident;
 
-        @Autowired
-        private FetchDataClientTest fetchdataclienttest;
-
-        ArrayList<UnresolvedIssues> a=fetchdataclienttest.getunresolveduissues();
+        List<UnresolvedIssue> a=fetchdataclienttest.getunresolveduissues();
 
 
         //list of unresoved issues
-        ArrayList<UnresolvedIssues> unresolveditems=new ArrayList<UnresolvedIssues>();
+        ArrayList<UnresolvedIssue> unresolveditems=new ArrayList<UnresolvedIssue>();
 
-        foreach(UnresolvedIssues i:a){
-            ArrayList<String> ticket=createIncident.executeScript(i.hostname,i.path);
+        for(UnresolvedIssue i:a){
+            ArrayList<String> ticket=createincident.executeScript(i.getHostname(),i.getIssuename());
+
+            Ticket tick=new Ticket();
+            tick.setTicketnumber(ticket.get(0));
+            tick.setAssignedToTeam(ticket.get(0));
             if(ticket != null){
-                createIncident.inserRecordstoDB();
+                createincident.inserRecordstoDB(tick);
             }
             else{
                 unresolveditems.add(i);
             }
         }
 
-        @Autowired
-        private MonitorSLA monitorsla;
-
-        monitorsla.monitorSLA();
-
-        @Autowired
-        private FetchDataClientTest fetchdataclienttest;
-
-        @Autowired
-        private FetchTicketDetails fetchticketdetails;
-
-        @Autowired
-        private AlertUsersSLA alertuserssla;
 
 
-        ArrayList<String> tickets=fetchdataclienttest.fetchticketDetails();
+        monitorsla.monitiorSLA();;
 
-        foreach(String s:tickets){
-            boolean status=fetchticketdetauls.fetchIssueIsAbouttoBreach(s);
+
+        List<String> tickets=fetchdataclienttest.fetchticketDetails();
+
+        for(String s:tickets){
+            boolean status=fetchticketdetails.fetchIssueIsAbouttoBreach(s);
 
             if(status==true){
-               Tickets t=fetchdataclienttest.fetchticketdetails(s);
+               Ticket t=fetchdataclienttest.fetchticketdetails(s);
 
                alertuserssla.sendEmailAlert(t.getAssignedToTeam(),s);
 
