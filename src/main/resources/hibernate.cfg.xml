@@ -16,5 +16,6 @@
         <!--<mapping class="com.example.RulesService.entities.ExistingIssues"/>-->
         <mapping class="com.example.entities.Laptop"/>
         <mapping class="com.example.entities.Student"/>
+        <mapping class="com.example.entities.UnresolvedIssue"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,13 +1,17 @@
-package com.example.client;
+package com.example.ActionService;
 
 import com.example.entities.Ticket;
+import com.example.entities.UnresolvedIssue;
 import com.example.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.example.entities.Laptop;
 import com.example.entities.Student;
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 
+@Component
 public class SaveDataClient {
 
 
@@ -23,7 +27,7 @@ public class SaveDataClient {
 			e.printStackTrace();
 		}*/
 
-		public static void main(String[] args) {
+		/*public static void main(String[] args) {
 			try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 				session.beginTransaction();
 				Integer id =(Integer)session.save(getStudent());
@@ -32,11 +36,11 @@ public class SaveDataClient {
 					session.getTransaction().commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
-			}
+			}*/
 
 
 
-		}
+
 
 	
 	/*private static ResolvedIssues getIssue (){
@@ -49,12 +53,22 @@ public class SaveDataClient {
 	}*/
 
 
+	private static UnresolvedIssue getunresolvedIssue (){
+		UnresolvedIssue u=new UnresolvedIssue();
+		u.setIssuename("CPU");
+		u.setHostname("10.20.200.190");
+		return u;
+	}
+
    // codee to push unresolved issues
-	/*private static void createunresolvedissues{
+	private static void createunresolvedissues(){
 
 		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 			session.beginTransaction();
-			Integer id =(Integer)session.save(getunresolvedIssue());
+			UnresolvedIssue u=new UnresolvedIssue();
+			u.setIssuename("CPU");
+			u.setHostname("10.20.200.190");
+			Integer id =(Integer)session.save(u);
 			System.out.println("Issue is created  with Id::"+id);
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
@@ -62,7 +76,7 @@ public class SaveDataClient {
 		}
 
 
-	}*/
+	}
 
 	//push ticket data to DB
 	public static void addTickettoDb(Ticket t) {
@@ -77,14 +91,7 @@ public class SaveDataClient {
 	}
 
 
-	/*private static UnresolvedIssues getunresolvedIssue (){
-		Issues issues=new Issues();
-		issues.setDescription("CPU is increased");
-		issues.setIssuename("CPU");
-		issues.setHostname("10.20.200.190");
-		issues.setCount(0);
-		return issues;
-	}*/
+
 
 	private static Laptop getLaptop(){
 
@@ -118,6 +125,8 @@ public class SaveDataClient {
 		s.setLaptop(al);
        return s;
 	}
+
+
 
 
 }

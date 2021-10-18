@@ -1,9 +1,7 @@
-package com.example.ActionService;
+/*package com.example.ActionService;
 
-import com.example.client.FetchDataClient;
 import com.example.entities.Ticket;
 import com.example.entities.UnresolvedIssue;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,23 +11,68 @@ import java.util.List;
 @RestController
 public class Actioncontroller {
 
-
-
-    @Autowired
     public CreateIncident createincident;
 
-    @Autowired
-    public FetchDataClient fetchdataclienttest;
+    public FetchDataClient fetchdataclient;
 
-
-    @Autowired
     private FetchTicketDetails fetchticketdetails;
 
-    @Autowired
     private AlertUsersSLA alertuserssla;
 
-    @Autowired
     private MonitorSLA monitorsla;
+
+
+    public Actioncontroller(CreateIncident createincident,FetchDataClient fetchdataclient,FetchTicketDetails fetchticketdetails,AlertUsersSLA alertuserssla,MonitorSLA monitorsla){
+        this.createincident=createincident;
+        this.fetchdataclient=fetchdataclient;
+        this.fetchticketdetails=fetchticketdetails;
+        this.alertuserssla=alertuserssla;
+        this.monitorsla=monitorsla;
+    }
+
+    public CreateIncident getCreateincident() {
+        return createincident;
+    }
+
+    public void setCreateincident(CreateIncident createincident) {
+        this.createincident = createincident;
+    }
+
+    public FetchDataClient getFetchdataclient() {
+        return fetchdataclient;
+    }
+
+    public void setFetchdataclient(FetchDataClient fetchdataclient) {
+        this.fetchdataclient = fetchdataclient;
+    }
+
+    public FetchTicketDetails getFetchticketdetails() {
+        return fetchticketdetails;
+    }
+
+    public void setFetchticketdetails(FetchTicketDetails fetchticketdetails) {
+        this.fetchticketdetails = fetchticketdetails;
+    }
+
+    public AlertUsersSLA getAlertuserssla() {
+        return alertuserssla;
+    }
+
+    public void setAlertuserssla(AlertUsersSLA alertuserssla) {
+        this.alertuserssla = alertuserssla;
+    }
+
+    public MonitorSLA getMonitorsla() {
+        return monitorsla;
+    }
+
+    public void setMonitorsla(MonitorSLA monitorsla) {
+        this.monitorsla = monitorsla;
+    }
+
+    public Actioncontroller(){
+
+    }
 
     @RequestMapping("/Action_service")
     public List<UnresolvedIssue> createTickets(){
@@ -76,4 +119,4 @@ public class Actioncontroller {
         }
         return unresolveditems;
     }
-}
+}*/

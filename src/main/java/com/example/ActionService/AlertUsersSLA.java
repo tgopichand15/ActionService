@@ -1,5 +1,7 @@
 package com.example.ActionService;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -10,6 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+@Component
 public class AlertUsersSLA {
 
      public void sendEmailAlert(String mailid,String ticketnumber){

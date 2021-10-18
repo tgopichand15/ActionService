@@ -1,15 +1,17 @@
-package com.example.client;
+package com.example.ActionService;
 
 import com.example.entities.Ticket;
 import com.example.entities.UnresolvedIssue;
 import com.example.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class FetchDataClient {
 
 	/*public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class FetchDataClient {
 
        public static List<UnresolvedIssue> getunresolveduissues(){
 		   try(Session session = HibernateUtil.getSessionFactory().openSession()) {
-			   Query query = session.createQuery("From UnreolsvedIssue");
+			   Query query = session.createQuery("From UnresolvedIssue");
 			   List<UnresolvedIssue> l = ((org.hibernate.query.Query) query).list();
 			   return l;
 		   }

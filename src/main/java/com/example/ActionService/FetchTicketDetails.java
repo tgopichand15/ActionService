@@ -1,8 +1,9 @@
 package com.example.ActionService;
 
-import com.example.client.FetchDataClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class FetchTicketDetails {
 
     @Autowired

@@ -4,13 +4,34 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="CheckUnresolvedIssue" class="com.example.SolutionService.CheckUnresolvedIssue">
-        <property name="checkunresolvedissue">
-            <ref bean="fetchdataclient" />
+    <bean id="CreateIncident" class="com.example.ActionService.CreateIncident">
+        <property name="createincident">
+            <ref bean="savedataclient" />
         </property>
     </bean>
 
-    <bean id="fetchdataclient" class="com.example.SolutionService.FwtchDataClient" />
+    <bean id="savedataclient" class="com.example.ActionService.SaveDataClient" />
+
+
+
+
+    <bean id="Actioncontroller" class="com.example.ActionService.Actioncontroller">
+        <property name="actioncontroller">
+            <ref bean="createincident" />
+            <ref bean="fetchdataclient" />
+            <ref bean="fetchticketdetails" />
+            <ref bean="alertusessla" />
+            <ref bean="monitorsla" />
+        </property>
+    </bean>
+
+    <bean id="createincident" class="com.example.ActionService.CreateIncident" />
+    <bean id="fetchdataclient" class="com.example.ActionService.FetchDataClient" />
+    <bean id="fetchticketdetails" class="com.example.ActionService.FetchTicketDetails" />
+    <bean id="alertusessla" class="com.example.ActionService.AlertUsersSLA" />
+    <bean id="monitorsla" class="com.example.ActionService.MonitorSLA" />
+
+
 
 
 </beans>

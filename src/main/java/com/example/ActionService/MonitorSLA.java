@@ -1,10 +1,12 @@
 package com.example.ActionService;
 
-import com.example.client.FetchDataClient;
 import com.example.entities.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import java.util.*;
 
+@Controller
 public class MonitorSLA {
 
     @Autowired
